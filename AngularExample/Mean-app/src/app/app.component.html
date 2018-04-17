@@ -1,0 +1,28 @@
+<nav class="navbar navbar-default" style="background-color: #2674C9;" role="navigation">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <a routerLink="/home">
+      <img src="https://angular.io/assets/images/logos/angular/logo-nav@2x.png" style="float: left;height: 40px;width: 150px;">
+    </a>
+  </div>
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse navbar-ex1-collapse">
+    <ul class="nav navbar-nav" *ngFor="let item of listMenu">
+      <li class="center" >
+        <a routerLink="/{{item}}" routerLinkActive="active">{{item | uppercase}}</a>
+      </li>
+    </ul>
+    <ul class="navbar-form navbar-right" role="search">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search">
+      </div>
+    </ul>
+  </div>
+  <!-- /.navbar-collapse -->
+</nav>
+
+<div class="container">
+  <router-outlet>
+
+  </router-outlet>
+</div>

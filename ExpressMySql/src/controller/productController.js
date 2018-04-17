@@ -4,7 +4,7 @@ const viewModel = require('../viewmodel');
 router.get('/', (req,res,next)=> {
     viewModel.Product.getAll().then( data => {
         res.json({
-            listCategory: data
+            listProduct: data
         })
     }).catch(err => {
         res.json(err);

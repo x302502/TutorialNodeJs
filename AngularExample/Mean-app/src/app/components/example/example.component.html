@@ -1,0 +1,11 @@
+<div class="row" > 
+  <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" *ngFor = "let item of listExample" >
+    <a class="btn btn-success my-btn" [routerLink]="[item]" routerLinkActive="router-link-active">{{item}}</a>
+  </div>
+</div>
+<div style="height: 30px;"></div>
+<div class="container">
+  <router-outlet>
+
+  </router-outlet>
+</div>

@@ -1,0 +1,66 @@
+<div class="content-left">
+
+  <form  #formAddProduct="ngForm" *ngIf="isShowFrom" (submit)="submitAddProduct(formAddProduct)">
+    <div class="form-group">
+      <legend style="color: blue;text-align: center;">Create new product</legend>
+    </div>
+    <div class="form-group">
+      <label for="name"> Name</label>
+      <br>
+      <input type="text" name="productname" class="form-group" required [(ngModel)]="product.productname">
+    </div>
+    <div class="form-group">
+      <label for="name"> Price </label>
+      <br>
+      <input type="number" name="price" class="form-group" required [(ngModel)]="product.price">
+    </div>
+    <div class="form-group">
+      <label for="name"> Status</label>
+      <br>
+      <input type="text" name="status" class="form-group" required [(ngModel)]="product.status">
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Add Product</button>
+    </div>
+  </form>
+
+  <button class="btn btn-primary my-btn" (click)="isShowFrom = true" *ngIf="!isShowFrom">ADD</button>
+</div>
+<div class="content-right">
+  <div style="height: 20px;"></div>
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Status</th>
+          <th>Type</th>
+          <th>Picture</th>
+          <th>Views</th>
+          <th>Setting</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of listProduct">
+          <td>{{ product.id }}</td>
+          <td>{{ product.productname}}</td>
+          <td>{{ product.price | currency}}</td>
+          <td>{{ product.status}}</td>
+          <td>{{ product.type}}</td>
+          <td class="mg-thumbnail">
+            <img src="{{ product.picture}}" alt="">
+          </td>
+          <td>
+            <a class="btn btn-info">View</a>
+          </td>
+          <td>
+            <a class="btn btn-primary">Edit</a>
+          </td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,21 +1,14 @@
 var express = require('express');
 var router = express.Router();
 const common = require('../common');
-const Product = require('../models/product')
-router.get('/product',(req,res,next)=>{
-   Product.getAll().then( (data) =>{
-       res.json(new common.ApiResult(200,'success',data));
-   })
-   .catch( err => {
-       res.json(err);
-   })
+const productController = require('../controller/productController');
+const categoryController = require('../controller/categoryController');
+router.use((req, res, next)=>{
+      res.status(404).json( new common.ApiResult(404,"err.url"));
+  });
+router.get('/tt',(req,res,next)=>{
+    res.json(req.query);
 })
-router.get('/product/add',(req,res,next)=>{
-    Product.add().then( (data) =>{
-        res.json(new common.ApiResult(200,'success',data));
-    })
-    .catch( err => {
-        res.json(err);
-    })
- })
+router.use('/product',productController);
+router.use('/category',categoryController);
 module.exports = router;

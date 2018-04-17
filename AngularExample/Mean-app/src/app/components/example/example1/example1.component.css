@@ -1,0 +1,20 @@
+.content-left {
+    width: 25%;
+    height: 100%;
+    float: left;
+}
+.content-right {
+    float: right;
+    width: 70%;
+    height: 100%;
+}
+.table-hover, td, th {
+    text-align: center;
+    border: solid green;
+}
+td img {
+    height: 100px;
+}
+.form-group{
+    width: 100%;
+}
