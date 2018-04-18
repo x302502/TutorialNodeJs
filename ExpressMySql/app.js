@@ -34,7 +34,6 @@ app.use(function (req, res, next) {
 
 app.use('/', indexRouter);
 app.use('/api',apiRouter);
-
 // 404 htpp
 app.all('*', function(req, res) {
     res.json({

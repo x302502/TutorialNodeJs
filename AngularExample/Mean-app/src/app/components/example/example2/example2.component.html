@@ -1,20 +1,50 @@
-<h1 style="text-align: center;"> Chat message </h1>
-
-<div align="center">
-  <textarea name="" id="" cols="100" rows="10"></textarea>
-  <div style="height: 40px;"></div>
-  <div align="center">
-    <form #formMessage= "ngForm">
-      <div class="form-group">
-        <input type="text" class="form-group">
-      </div>
-      <div class="form-group">
-        <input type="file" name="picture" class="form-group">
-      </div>
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </div>
-    </form>
-
+<div class="container" style="width: 80%;">
+  <div class="row">
+    <h2>Realtime Chat Application</h2>
+    <hr>
   </div>
+  <div class="row">
+    <div align ="center" *ngIf="isJoin"> 
+      <h3>Room chat: {{room}}</h3>
+    </div>
+    <div class="col-sm-5" *ngIf="!isJoin">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" [(ngModel)]="user" class="form-control" id="username" placeholder="Enter username">
+        <!-- <small id="userHelp" class="form-text text-muted">Type your username.</small> -->
+      </div>
+    </div>
+    <div class="col-sm-5" *ngIf="!isJoin">
+      <label for="roomInput">Choose room</label>
+      <select name="roomInput" id="roomInput" class="form-control" [(ngModel)]="room">
+        <option value="Room1">Room 1</option>
+        <option value="Room2">Room 2</option>
+        <option value="Room3">Room 3</option>
+      </select>
+    </div>
+    <div class="col sm-2">
+      <div style="margin-top:19px;" class="pull-right">
+        <button type="button" class="btn btn-primary" (click)="join()" *ngIf="!isJoin">Join</button>
+        <button type="button" class="btn btn-default" (click)="leave()" *ngIf="isJoin">Leave</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="well" style="height:200px; padding:15px;">
+      <div *ngFor="let item of messageArray">
+        <span>
+          <strong>{{item.user}} : </strong> {{item.message}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputSendMessage" [(ngModel)]="messageText">
+    </div>
+    <div class="col-sm-2" *ngIf="isJoin">
+      <button type="button" class="btn btn-success pull-right" (click)="sendMessage()"> Send </button>
+    </div>
+  </div>
+  <div style="height: 100px;"></div>
 </div>
