@@ -12,7 +12,7 @@ export class Example1Component implements OnInit {
   listProduct: [Product];
   isShowFrom = false;
   product: Product;
-  constructor( private productService: ProductService) {
+  constructor(private productService: ProductService) {
     this.product = new Product();
   }
 
@@ -25,6 +25,12 @@ export class Example1Component implements OnInit {
       });
     })
     .catch(err => console.log(err));
+    // this.productService.getList().subscribe(res => {
+    //   this.listProduct = res.json().listProduct;
+    //   this.listProduct.forEach(product => {
+    //     product.picture = HOST_IMAGE + product.picture;
+    //   });
+    // });
   }
   submitAddProduct(formAddProduct) {
     console.log(formAddProduct.value);
